@@ -58,7 +58,11 @@ void SceneTitle::Init()
 	button->SetOrigin(Origins::TC);
 	button->sortLayer = 100;
 	button->SetPosition(640.f, 450.f);
-
+	
+	UiButton* exitButton = (UiButton*)AddGo(new UiButton("graphics/ExitButton.png"));
+	exitButton->SetOrigin(Origins::TR);
+	exitButton->sortLayer = 100;
+	exitButton->SetPosition(1280.f, 0.f);
 	
 
 	button->OnEnter = [button]()
@@ -75,6 +79,22 @@ void SceneTitle::Init()
 	button->OnClick = [this]()
 	{
 		SCENE_MGR.ChangeScene(SceneId::Game);
+	};
+
+	exitButton->OnEnter = [exitButton]()
+	{
+		sf::Texture* tex = RESOURCE_MGR.GetTexture("graphics/ExitButton2.png");
+
+		exitButton->sprite.setTexture(*tex);
+	};
+	exitButton->OnExit = [exitButton]()
+	{
+		sf::Texture* tex = RESOURCE_MGR.GetTexture("graphics/ExitButton.png");
+		exitButton->sprite.setTexture(*tex);
+	};
+	exitButton->OnClick = [this]()
+	{
+		window.close(); 
 	};
 
 	for (auto go : gameObjects)

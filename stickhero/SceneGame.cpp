@@ -48,6 +48,13 @@ void SceneGame::Init()
 	homeButton->SetPosition(390.f, 450.f);
 	homeButton->SetName("Home");
 	homeButton->SetActive(false);
+
+	UiButton* exitButton = (UiButton*)AddGo(new UiButton("graphics/ExitButton.png"));
+	exitButton->SetOrigin(Origins::MC);
+	exitButton->sortLayer = 100;
+	exitButton->SetPosition(890.f, 450.f);
+	exitButton->SetName("Exit");
+	exitButton->SetActive(false);
 	
 
 
@@ -83,7 +90,7 @@ void SceneGame::Init()
 	hitbox->SetName("HitBox");
 	hitbox->SetSize({0.1f, 10.f});
 	hitbox->SetFillColor(sf::Color::Red);
-	hitbox->sortLayer = 30;
+	hitbox->sortLayer = -30;
 	hitbox->SetOrigin(Origins::MC);
 
 	land1->SetSize(Utils::RandomRange(100.f, 200.f), 720.f);
@@ -148,6 +155,7 @@ void SceneGame::Update(float dt)
 
 	UiButton* reButton = (UiButton*)FindGo("Restart");
 	UiButton* homeButton = (UiButton*)FindGo("Home");
+	UiButton* exitButton = (UiButton*)FindGo("Exit");
 	
 	if (!playerdie)
 	{
@@ -368,7 +376,24 @@ void SceneGame::Update(float dt)
 				SCENE_MGR.ChangeScene(SceneId::Title); 
 				
 			};
-			
+
+			exitButton->SetActive(true);
+
+			exitButton->OnEnter = [exitButton]()
+			{
+				sf::Texture* tex = RESOURCE_MGR.GetTexture("graphics/ExitButton2.png"); 
+
+				exitButton->sprite.setTexture(*tex); 
+			};
+			exitButton->OnExit = [exitButton]() 
+			{
+				sf::Texture* tex = RESOURCE_MGR.GetTexture("graphics/ExitButton.png"); 
+				exitButton->sprite.setTexture(*tex); 
+			};
+			exitButton->OnClick = [this]() 
+			{
+				window.close(); 
+			};
 		}
 	}
 
@@ -404,6 +429,7 @@ void SceneGame::ReStart()
 	sf::FloatRect hitb = hitbox->GetGlobalBounds();
 	UiButton* reButton = (UiButton*)FindGo("Restart");
 	UiButton* homeButton = (UiButton*)FindGo("Home");
+	UiButton* exitButton = (UiButton*)FindGo("Exit");
 
 	totalRotation = 0.f;
 	sticklength = 0.f;
@@ -433,4 +459,5 @@ void SceneGame::ReStart()
 	player->SetOrigin(Origins::BC);
 	text.setCharacterSize(30);
 	text.setPosition(600.f, 0.f);
+	exitButton->SetActive(false);
 }
