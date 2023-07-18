@@ -377,11 +377,6 @@ void SceneGame::Update(float dt)
 		record = score;
 	}
 
-	if (INPUT_MGR.GetKeyDown(sf::Keyboard::Num7))
-	{
-		SCENE_MGR.EXIT();
-	}
-
 	Scene::Update(dt);
 }
 
