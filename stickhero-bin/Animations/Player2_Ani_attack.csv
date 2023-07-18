@@ -1,0 +1,9 @@
+ID,FPS,LOOPTYPE,,
+Attack,10,0,,
+,,,,
+TEXTUREID,LEFT,TOP,WIDTH,HEIGHT
+graphics/test.png,0,155,86,67
+graphics/test.png,86,155,86,67
+graphics/test.png,172,155,86,67
+graphics/test.png,258,155,86,67
+graphics/test.png,344,155,86,67

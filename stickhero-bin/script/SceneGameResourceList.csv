@@ -1,0 +1,13 @@
+"RESOURCE_TYPE(0: 텍스처 , 1: 폰트,2: 사운드 클립 3: 애니메이션 클립",RESOURCE_PATH
+0,graphics/RubySheet.png
+0,graphics/Button.png
+0,graphics/Button2.png
+0,graphics/test.png
+0,graphics/sprite_sheet.png
+0,graphics/title.png
+0,graphics/background.png
+1,font/NanumGothic.ttf
+0,graphics/ReButton.png
+0,graphics/ReButton2.png
+0,graphics/HomeButton.png
+0,graphics/HomeButton2.png

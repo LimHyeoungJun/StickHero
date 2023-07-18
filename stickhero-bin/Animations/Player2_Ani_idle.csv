@@ -1,0 +1,11 @@
+ID,FPS,LOOPTYPE,,
+None,10,1,,
+,,,,
+TEXTUREID,LEFT,TOP,WIDTH,HEIGHT
+graphics/test.png,0,15,37,64
+graphics/test.png,37,15,37,64
+graphics/test.png,74,15,37,64
+graphics/test.png,111,15,37,64
+graphics/test.png,148,15,37,64
+graphics/test.png,185,15,37,64
+graphics/test.png,222,15,37,64
