@@ -2,31 +2,79 @@
 #include "PlayerTest.h"
 #include "InputMgr.h"
 #include "ResourceMgr.h"
+#include "SceneChooseCharacter.h"
+
 PlayerTest::PlayerTest(const std::string& textureId, const std::string& n)
 	:SpriteGo(textureId, n)
 {
+	
 }
 
 void PlayerTest::Init()
 {
 	animation.AddClip(*RESOURCE_MGR.GetAnimationClip("Animations/Player2_Ani_idle.csv")); 
-	animation.AddClip(*RESOURCE_MGR.GetAnimationClip("Animations/Player2_Ani_attack.csv")); 
-	animation.AddClip(*RESOURCE_MGR.GetAnimationClip("Animations/Player2_Ani_run.csv")); 
+	animation.AddClip(*RESOURCE_MGR.GetAnimationClip("Animations/Player2_Ani_attack.csv"));  
+	animation.AddClip(*RESOURCE_MGR.GetAnimationClip("Animations/Player2_Ani_run.csv"));  
+
+	animation.SetTarget(&sprite);  
+
+	SetOrigin(Origins::BC);  
+	 
+
 	
-	animation.SetTarget(&sprite);
-
-	SetOrigin(Origins::BC);
-
 }
 
 void PlayerTest::Reset()
 {
-	animation.Play("None");
+	switch (Variables::playerty)
+	{
+	case PlayerType::P1:
+	{
+		animation.DeleteClip();
+		animation.AddClip(*RESOURCE_MGR.GetAnimationClip("Animations/Player2_Ani_idle.csv")); 
+		animation.AddClip(*RESOURCE_MGR.GetAnimationClip("Animations/Player2_Ani_attack.csv")); 
+		animation.AddClip(*RESOURCE_MGR.GetAnimationClip("Animations/Player2_Ani_run.csv")); 
+		animation.SetTarget(&sprite); 
+		SetOrigin(Origins::BC); 
+		SetPosition(-450, 300);
+		Ypos = 300.f;
+		break;
+	}
+	case PlayerType::P2:
+	{
+		animation.DeleteClip();
+		animation.AddClip(*RESOURCE_MGR.GetAnimationClip("Animations/Player2_idle.csv"));
+		animation.AddClip(*RESOURCE_MGR.GetAnimationClip("Animations/Player2_attack.csv"));
+		animation.AddClip(*RESOURCE_MGR.GetAnimationClip("Animations/Player2_move.csv"));
+		animation.SetTarget(&sprite);
+		SetOrigin(Origins::BC);
+		SetPosition(-450, 260);
+		Ypos = 260.f;
+		break;
+	}
+	case PlayerType::P3:
+	{
+		animation.DeleteClip();
+		animation.AddClip(*RESOURCE_MGR.GetAnimationClip("Animations/Player3_idle.csv"));
+		animation.AddClip(*RESOURCE_MGR.GetAnimationClip("Animations/Player3_attack.csv"));
+		animation.AddClip(*RESOURCE_MGR.GetAnimationClip("Animations/Player3_move.csv"));
+		animation.SetTarget(&sprite); 
+		SetOrigin(Origins::BC); 
+		SetPosition(-450, 260);
+		Ypos = 260.f;
+
+
+		break;
+	}
+	}
+
+	animation.Play("Idle");
 	sprite.setScale(3.f, 3.f);
 	SetOrigin(origin); 
-	SetPosition(-450, 300);
-	//SpriteGo::Reset();
+	SetPosition(-450, Ypos);
+	
 	oriPos = GetPosition(); 
+
 }
 
 void PlayerTest::Update(float dt)
@@ -40,27 +88,27 @@ void PlayerTest::Update(float dt)
 
 		if ((animation.GetCurrentClipId() == "Attack") && animationStart)
 		{
-			animation.Play("Run");
+			animation.Play("Move");
 			isrun = true;
 		}
 		if (isrun)
 		{
-			position.x += 500.f * dt;
+			position.x += 700.f * dt;
 		}
-		if (isfulling && (animation.GetCurrentClipId() == "None")&& !playerArrival )
+		if (isfulling && (animation.GetCurrentClipId() == "Idle")&& !playerArrival )
 		{
 			position.y += gravity * dt;
 			isgo = false;
 		}
-		if (position.x >= oriPos.x + sticklength + 70.f && (animation.GetCurrentClipId() == "Run"))
+		if (position.x >= oriPos.x + sticklength + 70.f && (animation.GetCurrentClipId() == "Move"))
 		{
-			animation.Play("None");
+			animation.Play("Idle");
 			position.x = oriPos.x + sticklength + 70.f;
 			isrun = false;
 			reset = true;
 			isgo = true;
 		}
-		if (reset && (animation.GetCurrentClipId() == "None")&&!isfulling)
+		if (reset && (animation.GetCurrentClipId() == "Idle")&&!isfulling)
 		{
 			if (position.x <= oriPos.x)
 			{

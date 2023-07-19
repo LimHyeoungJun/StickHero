@@ -24,6 +24,7 @@ public:
 
 
 	void AddClip(const AnimationClip& newClip);
+	void DeleteClip();
 	void SetTarget(sf::Sprite* sprite) { target = sprite; };
 	sf::Sprite* GetTarget()const { return target; };
 	bool IsPlaying() { return isPlaying; };

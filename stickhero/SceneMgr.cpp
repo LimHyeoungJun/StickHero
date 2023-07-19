@@ -4,6 +4,7 @@
 #include "DataTableMgr.h"
 #include "StringTable.h"
 #include "SceneTitle.h"
+#include "SceneChooseCharacter.h"
 
 void SceneMgr::Init()
 {
@@ -12,8 +13,9 @@ void SceneMgr::Init()
 		Release();
 	}
 	scenes.push_back(new SceneTitle()); 
-	scenes.push_back(new SceneGame());
-
+	scenes.push_back(new SceneGame());  
+	scenes.push_back(new SceneChooseCharacter());
+	
 	for (auto scene : scenes)
 	{
 		scene->Init();

@@ -36,6 +36,7 @@ protected:
 
 	float time = 1.7f; 
 
+	float playerYpos;
 public:
 	SceneGame();
 	virtual ~SceneGame() override = default;
@@ -49,5 +50,7 @@ public:
 	virtual void Update(float dt) override;
 	virtual void Draw(sf::RenderWindow& window) override;
 	void ReStart(); 
+	void SaveScore(int highscore);
+	int LoadScore(); 
 };
 

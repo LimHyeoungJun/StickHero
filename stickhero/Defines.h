@@ -37,6 +37,7 @@ enum class SceneId
 	None = -1,
 	Title,
 	Game,
+	Choose,
 	Count,
 };
 
@@ -44,6 +45,14 @@ enum class ShapeType
 {
 	None,
 	Rectangle,
+};
+
+enum class PlayerType
+{
+	None,
+	P1,
+	P2,
+	P3,
 };
 
 #include "AnimationClip.h"

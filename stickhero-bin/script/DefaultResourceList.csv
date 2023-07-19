@@ -1,11 +1,13 @@
 "RESOURCE_TYPE(0: 텍스처 , 1: 폰트,2: 사운드 클립 3: 애니메이션 클립",RESOURCE_PATH
-3,Animations/Player2_Ani_Idle_Side.csv
-3,Animations/Player2_Ani_Idle_Side-Down.csv
-3,Animations/Player2_Ani_Idle_Side-Up.csv
-3,Animations/Player2_Ani_Move-Side.csv
-3,Animations/Player2_Ani_Move_UP.csv
-3,Animations/Player2_Ani_Move_Down.csv
 3,Animations/Player2_Ani_idle.csv
 3,Animations/Player2_Ani_attack.csv
 3,Animations/Player2_Ani_run.csv
+3,Animations/Player2_idle.csv
+3,Animations/Player2_move.csv
+3,Animations/Player2_attack.csv
 0,graphics/background.png
+0,graphics/Player2_sheet.png
+3,Animations/Player3_idle.csv
+3,Animations/Player3_attack.csv
+3,Animations/Player3_move.csv
+0,graphics/Player3_sheet.png

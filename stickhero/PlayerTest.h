@@ -19,10 +19,13 @@ protected:
 	bool isfulling = false;
 	float gravity = 1000.f; 
 	bool reset = false;
-
 	bool playerArrival = false;
-
 	bool isgo = false;
+
+	PlayerType player;
+	bool choose = true;
+
+	float Ypos;
 
 public:
 	AnimationController animation; 

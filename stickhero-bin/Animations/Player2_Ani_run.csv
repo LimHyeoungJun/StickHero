@@ -1,5 +1,5 @@
 ID,FPS,LOOPTYPE,,
-Run,10,1,,
+Move,10,1,,
 ,,,,
 TEXTUREID,LEFT,TOP,WIDTH,HEIGHT
 graphics/test.png,0,81,54,50

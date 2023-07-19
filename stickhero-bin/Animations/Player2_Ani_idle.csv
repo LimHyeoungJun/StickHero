@@ -1,5 +1,5 @@
 ID,FPS,LOOPTYPE,,
-None,10,1,,
+Idle,10,1,,
 ,,,,
 TEXTUREID,LEFT,TOP,WIDTH,HEIGHT
 graphics/test.png,0,15,37,64

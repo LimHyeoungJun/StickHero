@@ -9,6 +9,12 @@ void AnimationController::AddClip(const AnimationClip& newClip)
 	}
 }
 
+void AnimationController::DeleteClip()
+{
+	clips.clear();
+	//std::unordered_map<std::string, AnimationClip> clips; 
+}
+
 void AnimationController::Update(float dt)
 {
 	if (!isPlaying)

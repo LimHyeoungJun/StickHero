@@ -15,6 +15,7 @@
 #include "SpriteGo.h"
 #include "UiButton.h"
 
+
 SceneGame::SceneGame() : Scene(SceneId::Game)
 {
 	resourceListPath = ("script/SceneGameResourceList.csv");
@@ -101,6 +102,8 @@ void SceneGame::Init()
 	land1->SetOrigin(Origins::TC); 
 	isflip = true;
 	
+	record = LoadScore(); 
+
 
 	for (auto go : gameObjects)
 	{
@@ -135,6 +138,7 @@ void SceneGame::Enter()
 
 	backg = (RESOURCE_MGR.GetTexture("graphics/background.png"));
 	
+	playerYpos = player->GetPosition().y; 
 
 }
 void SceneGame::Exit()
@@ -201,19 +205,6 @@ void SceneGame::Update(float dt)
 				}
 			}
 		}
-
-		
-
-		if (INPUT_MGR.GetKeyDown(sf::Keyboard::Num1))
-		{
-			hitbox->SetSize({ 10.f,10.f });
-		}
-
-		if (INPUT_MGR.GetKeyDown(sf::Keyboard::Num2))
-		{
-			hitbox->SetSize({ 0.1f,10.f });
-		}
-
 		if (ischeck)
 		{
 			if (isflip)
@@ -396,10 +387,16 @@ void SceneGame::Update(float dt)
 			};
 		}
 	}
+	if (INPUT_MGR.GetKeyDown(sf::Keyboard::Escape))
+	{
+		SCENE_MGR.ChangeScene(SceneId::Title);
+		//ReStart();
+	}
 
 	if (record <= score)
 	{
 		record = score;
+		SaveScore(record);
 	}
 
 	Scene::Update(dt);
@@ -446,7 +443,7 @@ void SceneGame::ReStart()
 	land1->SetOrigin(Origins::TC);
 	isflip = true;
 	player->SetRun(false);
-	player->SetPosition(-450.f, 300.f);
+	player->SetPosition(-450.f, playerYpos);
 	ischeck = false;
 	player->PlayerDie(false);
 	playerdie = false;
@@ -460,4 +457,38 @@ void SceneGame::ReStart()
 	text.setCharacterSize(30);
 	text.setPosition(600.f, 0.f);
 	exitButton->SetActive(false);
+	
+}
+
+void SceneGame::SaveScore(int highscore)
+{
+	std::ofstream file("highscore.txt");
+	if (file.is_open())
+	{
+		file << highscore;
+		file.close();
+		std::cout << "save score" << std::endl;
+	}
+	else
+	{
+		std::cout << "failed" << std::endl;
+	}
+}
+
+int SceneGame::LoadScore()
+{
+	int highscore = 0;
+	std::ifstream file("highscore.txt");
+	if (file.is_open())
+	{
+		file >> highscore;
+		file.close();
+		std::cout << "Load successfully" << std::endl;
+	}
+	else
+	{
+		std::cout << "failed" << std::endl;
+	}
+
+	return highscore;
 }

@@ -63,6 +63,12 @@ void SceneTitle::Init()
 	exitButton->SetOrigin(Origins::TR);
 	exitButton->sortLayer = 100;
 	exitButton->SetPosition(1280.f, 0.f);
+	exitButton->sprite.setScale(0.65f, 0.65f);
+
+	UiButton* charaterButton = (UiButton*)AddGo(new UiButton("graphics/charater.png"));
+	charaterButton->SetOrigin(Origins::MC);
+	charaterButton->sortLayer = 100;
+	charaterButton->SetPosition(50.f, 500.f);
 	
 
 	button->OnEnter = [button]()
@@ -95,6 +101,22 @@ void SceneTitle::Init()
 	exitButton->OnClick = [this]()
 	{
 		window.close(); 
+	};
+
+	charaterButton->OnEnter = [charaterButton]()
+	{
+		sf::Texture* tex = RESOURCE_MGR.GetTexture("graphics/charater2.png");
+
+		charaterButton->sprite.setTexture(*tex);
+	};
+	charaterButton->OnExit = [charaterButton]()
+	{
+		sf::Texture* tex = RESOURCE_MGR.GetTexture("graphics/charater.png");
+		charaterButton->sprite.setTexture(*tex);
+	};
+	charaterButton->OnClick = [this]()
+	{
+		SCENE_MGR.ChangeScene(SceneId::Choose); 
 	};
 
 	for (auto go : gameObjects)
