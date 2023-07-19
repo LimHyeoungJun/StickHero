@@ -5,6 +5,7 @@
 #include "Scene.h"
 #include "DataTableMgr.h"
 #include "ResourceMgr.h"
+
 Framework::Framework(int w, int h, const std::string& t)
     : screenWidth(w), screenHeight(h), title(t)
 {
@@ -40,12 +41,15 @@ void Framework::Run()
     Init(screenWidth, screenHeight, title);
     clock.restart();
 
+  
+
     while (window.isOpen())
     {
         sf::Time deltaTime = clock.restart();
         float dt = deltaTime.asSeconds();
 
         INPUT_MGR.Update(dt);
+
 
         sf::Event event;
         while (window.pollEvent(event))
@@ -69,6 +73,7 @@ void Framework::Run()
             window.clear();
             Draw();
             window.display();
+
         }
     }
 
@@ -84,3 +89,4 @@ sf::RenderWindow& Framework::GetWindow()
 {
     return window;
 }
+

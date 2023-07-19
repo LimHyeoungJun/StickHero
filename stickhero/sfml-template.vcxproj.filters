@@ -117,6 +117,9 @@
     <ClCompile Include="SceneChooseCharacter.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="SceneOption.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player2.h">
@@ -210,6 +213,9 @@
       <Filter>GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="SceneChooseCharacter.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneOption.h">
       <Filter>Scenes</Filter>
     </ClInclude>
   </ItemGroup>

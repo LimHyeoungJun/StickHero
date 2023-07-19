@@ -346,6 +346,7 @@ void SceneGame::Update(float dt)
 			reButton->OnClick = [this]()
 			{
 				ReStart();
+				//SCENE_MGR.ChangeScene(SceneId::Game);
 			};
 
 			homeButton->SetActive(true); 
@@ -389,8 +390,9 @@ void SceneGame::Update(float dt)
 	}
 	if (INPUT_MGR.GetKeyDown(sf::Keyboard::Escape))
 	{
+		ReStart();
 		SCENE_MGR.ChangeScene(SceneId::Title);
-		//ReStart();
+		
 	}
 
 	if (record <= score)

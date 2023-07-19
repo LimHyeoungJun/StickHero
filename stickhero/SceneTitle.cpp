@@ -69,6 +69,11 @@ void SceneTitle::Init()
 	charaterButton->SetOrigin(Origins::MC);
 	charaterButton->sortLayer = 100;
 	charaterButton->SetPosition(50.f, 500.f);
+
+	UiButton* optionButton = (UiButton*)AddGo(new UiButton("graphics/option.png"));
+	optionButton->SetOrigin(Origins::MC);
+	optionButton->sortLayer = 100;
+	optionButton->SetPosition(50.f, 630.f);
 	
 
 	button->OnEnter = [button]()
@@ -117,6 +122,22 @@ void SceneTitle::Init()
 	charaterButton->OnClick = [this]()
 	{
 		SCENE_MGR.ChangeScene(SceneId::Choose); 
+	};
+
+	optionButton->OnEnter = [optionButton]()
+	{
+		sf::Texture* tex = RESOURCE_MGR.GetTexture("graphics/option2.png");
+
+		optionButton->sprite.setTexture(*tex);
+	};
+	optionButton->OnExit = [optionButton]()
+	{
+		sf::Texture* tex = RESOURCE_MGR.GetTexture("graphics/option.png");
+		optionButton->sprite.setTexture(*tex);
+	};
+	optionButton->OnClick = [this]()
+	{
+		SCENE_MGR.ChangeScene(SceneId::Option);
 	};
 
 	for (auto go : gameObjects)

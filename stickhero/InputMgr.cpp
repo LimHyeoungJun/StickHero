@@ -30,7 +30,7 @@ void InputMgr::Update(float dt)
 {
 	downList.clear();
 	upList.clear();
-
+	
 	for (auto& it : axisInfoMap)
 	{
 		auto& axisInfo = it.second;

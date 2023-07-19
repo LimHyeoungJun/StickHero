@@ -20,6 +20,7 @@ protected:
 
 	sf::RenderWindow& window;
 
+
 public:
 	Scene(SceneId id = SceneId::None);
 	virtual ~Scene();
@@ -44,5 +45,6 @@ public:
 
 	virtual void Update(float dt);
 	virtual void Draw(sf::RenderWindow& window);
+
 };
 

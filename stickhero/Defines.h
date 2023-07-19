@@ -38,6 +38,7 @@ enum class SceneId
 	Title,
 	Game,
 	Choose,
+	Option,
 	Count,
 };
 
