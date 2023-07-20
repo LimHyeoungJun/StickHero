@@ -1,0 +1,8 @@
+ID,FPS,LOOPTYPE,,
+Move,10,1,,
+,,,,
+TEXTUREID,LEFT,TOP,WIDTH,HEIGHT
+graphics/Player2_sheet.png,7,130,44,29
+graphics/Player2_sheet.png,60,130,44,32
+graphics/Player2_sheet.png,113,130,44,29
+graphics/Player2_sheet.png,166,130,44,31

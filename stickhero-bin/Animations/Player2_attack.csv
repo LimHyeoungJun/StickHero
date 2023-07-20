@@ -1,0 +1,11 @@
+ID,FPS,LOOPTYPE,,
+Attack,10,1,,
+,,,,
+TEXTUREID,LEFT,TOP,WIDTH,HEIGHT
+graphics/Player2_sheet.png,7,380,36,48
+graphics/Player2_sheet.png,52,380,34,49
+graphics/Player2_sheet.png,95,380,62,47
+graphics/Player2_sheet.png,166,380,61,51
+graphics/Player2_sheet.png,236,380,35,57
+graphics/Player2_sheet.png,280,380,36,53
+graphics/Player2_sheet.png,325,380,36,50
