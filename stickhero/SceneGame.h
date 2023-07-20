@@ -7,37 +7,43 @@ class PlayerTest;
 class SceneGame : public Scene
 {
 protected:
-	//Player2* player;
 	PlayerTest* player;
-	//Stick* stick;
+
 	sf::RectangleShape shape;
-	//sf::RectangleShape stick;
+
 	float sticklength;
 	float speed = 1000.f;
 	float totalRotation = 0.f;
-	bool stickmove = false;
+    float time = 1.7f;
+	float playerYpos;
+
+	bool wood = false;
 	bool landSequence = true;
 	bool ischeck = false;
 	bool ismove = false;
 	bool isflip = true;
 	bool going = false;
-	sf::Vector2f playermaxpos;
 	bool playerdie = false;
+	bool scorecount = true;
+	bool landfirst = true;
+	sf::Vector2f playermaxpos;
 
 	sf::Font* font;
+
 	sf::Text text;
 	sf::Text best;
 	sf::Texture* backg;
-	int score = 0;
-	bool scorecount = true;
 
-	//bool playerdie = false;
+	int score = 0;
 	int record;
+
 	std::map<std::string, bool> mouseOverStates;
 
-	float time = 1.7f;
+	/*float land1pos;
+	float land2pos;
 
-	float playerYpos;
+	bool create;*/
+
 public:
 	SceneGame();
 	virtual ~SceneGame() override = default;
@@ -50,8 +56,19 @@ public:
 
 	virtual void Update(float dt) override;
 	virtual void Draw(sf::RenderWindow& window) override;
+
+	void GamePlaying(float dt);
+
 	void ReStart(); 
+
 	void SaveScore(int highscore);
-	int LoadScore(); 
+	int LoadScore();
+ 
+	void CreatLand1();
+	void CreatLand2();
+
+
+	void ShowButton();
+	
 };
 

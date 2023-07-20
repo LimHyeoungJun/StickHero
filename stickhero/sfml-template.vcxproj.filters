@@ -120,6 +120,12 @@
     <ClCompile Include="SceneOption.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="SceneEasterEgg.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="EggAnimation.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player2.h">
@@ -217,6 +223,12 @@
     </ClInclude>
     <ClInclude Include="SceneOption.h">
       <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneEasterEgg.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="EggAnimation.h">
+      <Filter>GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

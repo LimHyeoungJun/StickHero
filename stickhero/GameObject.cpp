@@ -14,7 +14,7 @@ GameObject::~GameObject()
 bool GameObject::GetActive() const
 {
 	return isActive;
-}
+} 
 
 void GameObject::SetActive(bool active)
 {

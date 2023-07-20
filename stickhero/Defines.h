@@ -39,6 +39,7 @@ enum class SceneId
 	Game,
 	Choose,
 	Option,
+	Easter,
 	Count,
 };
 

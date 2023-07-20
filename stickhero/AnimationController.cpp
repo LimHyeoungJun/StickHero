@@ -109,7 +109,7 @@ void AnimationController::SetFrame(const AnimationFrame& frame)
 {
 	sf::Texture* tex = RESOURCE_MGR.GetTexture(frame.textureId);
 	target->setTexture(*tex);
-	target->setTextureRect(frame.texCoord);
+     	target->setTextureRect(frame.texCoord);
 }
 
 std::queue<std::string> AnimationController::GetQueue() const

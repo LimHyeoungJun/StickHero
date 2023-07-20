@@ -2,7 +2,7 @@
 #include "SpriteGo.h"
 #include "AnimationController.h"
 
-class SceneGame;
+//class SceneGame;
 
 class PlayerTest :public SpriteGo
 {

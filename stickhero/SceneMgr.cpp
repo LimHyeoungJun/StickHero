@@ -6,6 +6,7 @@
 #include "SceneTitle.h"
 #include "SceneChooseCharacter.h"
 #include "SceneOption.h"
+#include "SceneEasterEgg.h"
 
 void SceneMgr::Init()
 {
@@ -17,6 +18,7 @@ void SceneMgr::Init()
 	scenes.push_back(new SceneGame());  
 	scenes.push_back(new SceneChooseCharacter());
 	scenes.push_back(new SceneOption());
+	scenes.push_back(new SceneEasterEgg());
 	
 	for (auto scene : scenes)
 	{
