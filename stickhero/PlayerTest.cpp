@@ -36,8 +36,8 @@ void PlayerTest::Reset()
 		animation.AddClip(*RESOURCE_MGR.GetAnimationClip("Animations/Player2_Ani_run.csv")); 
 		animation.SetTarget(&sprite); 
 		SetOrigin(Origins::BC); 
-		SetPosition(-450, 300);
-		Ypos = 300.f;
+		SetPosition(-430, 286);
+		Ypos = 286.f;
 		break;
 	}
 	case PlayerType::P2:
@@ -69,7 +69,7 @@ void PlayerTest::Reset()
 	}
 
 	animation.Play("Idle");
-	sprite.setScale(3.f, 3.f);
+	sprite.setScale(2.f, 2.f);
 	SetOrigin(origin); 
 	SetPosition(-450, Ypos);
 	

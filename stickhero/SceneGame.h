@@ -1,6 +1,7 @@
 #pragma once
 #include "Scene.h"
 
+
 class PlayerTest;
 
 class SceneGame : public Scene
@@ -14,17 +15,17 @@ protected:
 	float sticklength;
 	float speed = 1000.f;
 	float totalRotation = 0.f;
-	bool wood = false;
+	bool stickmove = false;
 	bool landSequence = true;
 	bool ischeck = false;
-	bool ismove = false; 
+	bool ismove = false;
 	bool isflip = true;
 	bool going = false;
 	sf::Vector2f playermaxpos;
 	bool playerdie = false;
 
-	sf::Font* font; 
-	sf::Text text; 
+	sf::Font* font;
+	sf::Text text;
 	sf::Text best;
 	sf::Texture* backg;
 	int score = 0;
@@ -32,9 +33,9 @@ protected:
 
 	//bool playerdie = false;
 	int record;
-	std::map<std::string, bool> mouseOverStates; 
+	std::map<std::string, bool> mouseOverStates;
 
-	float time = 1.7f; 
+	float time = 1.7f;
 
 	float playerYpos;
 public:

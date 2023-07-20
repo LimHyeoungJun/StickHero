@@ -49,7 +49,7 @@ void SceneChooseCharacter::Init()
 {
 	Release();
 
-	SpriteGo* tex = (SpriteGo*)AddGo(new SpriteGo("graphics/background.png"));
+	SpriteGo* tex = (SpriteGo*)AddGo(new SpriteGo("graphics/charaterBg.png"));
 	tex->SetOrigin(Origins::MC); 
 
 	UiButton* homeButton = (UiButton*)AddGo(new UiButton("graphics/HomeButton.png"));

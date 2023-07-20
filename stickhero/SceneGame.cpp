@@ -37,13 +37,15 @@ void SceneGame::Init()
 	Release();
 
 	UiButton* reButton = (UiButton*)AddGo(new UiButton("graphics/ReButton.png"));   
-	reButton->SetOrigin(Origins::MC);  
-	reButton->sortLayer = 100;  
-	reButton->SetPosition(640.f,450.f);  
-	reButton->SetName("Restart");
-	reButton->SetActive(false); 
+	//reButton = (UiButton*)AddGo(new UiButton("graphics/ReButton.png"));    
+	reButton->SetOrigin(Origins::MC);   
+	reButton->sortLayer = 100;   
+	reButton->SetPosition(640.f,450.f);   
+	reButton->SetName("Restart"); 
+	reButton->SetActive(false);  
 
 	UiButton* homeButton = (UiButton*)AddGo(new UiButton("graphics/HomeButton.png"));
+	//homeButton = (UiButton*)AddGo(new UiButton("graphics/HomeButton.png"));
 	homeButton->SetOrigin(Origins::MC);
 	homeButton->sortLayer = 100;
 	homeButton->SetPosition(390.f, 450.f);
@@ -51,6 +53,7 @@ void SceneGame::Init()
 	homeButton->SetActive(false);
 
 	UiButton* exitButton = (UiButton*)AddGo(new UiButton("graphics/ExitButton.png"));
+	//exitButton = (UiButton*)AddGo(new UiButton("graphics/ExitButton.png"));
 	exitButton->SetOrigin(Origins::MC);
 	exitButton->sortLayer = 100;
 	exitButton->SetPosition(890.f, 450.f);
@@ -148,6 +151,7 @@ void SceneGame::Exit()
 
 void SceneGame::Update(float dt)
 {
+	//-----------------매프레임마다 다시 해줄필요X-------------------------------------
 	Stick* stick = (Stick*)FindGo("stick");
 	Land* land1 = (Land*)FindGo("Land1");
 	Land* land2 = (Land*)FindGo("Land2");
@@ -160,7 +164,8 @@ void SceneGame::Update(float dt)
 	UiButton* reButton = (UiButton*)FindGo("Restart");
 	UiButton* homeButton = (UiButton*)FindGo("Home");
 	UiButton* exitButton = (UiButton*)FindGo("Exit");
-	
+	//------------------------------------------------------
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////플레이어가 살아있을때
 	if (!playerdie)
 	{
 		if (INPUT_MGR.GetKey(sf::Keyboard::Space))
@@ -176,9 +181,9 @@ void SceneGame::Update(float dt)
 
 		if (INPUT_MGR.GetKeyUp(sf::Keyboard::Space))
 		{
-			wood = true;
+			stickmove = true;
 		}
-		if (wood)
+		if (stickmove)
 		{
 			float rotationSpeed = 200.f; // 회전 속도 
 			float rotationLimit = 90.f; // 회전한 총 각도 제한 
@@ -302,7 +307,7 @@ void SceneGame::Update(float dt)
 			scorecount = true;
 			stick->SetPosition({ -340.f,257.f });
 			stick->SetRotaition(0.f);
-			wood = false;
+			stickmove = false;
 
 		}
 
@@ -323,12 +328,12 @@ void SceneGame::Update(float dt)
 			SCENE_MGR.ChangeScene(SceneId::Title);
 		}
 	}
-	else
+    else
 	{
 		
 		if (player->GetPosition().y > 1000.f)
 		{
-			reButton->SetActive(true);
+			reButton->SetActive(true); 
 			text.setCharacterSize(90);
 			text.setPosition(450.f,100.f); 
 
@@ -369,7 +374,7 @@ void SceneGame::Update(float dt)
 				
 			};
 
-			exitButton->SetActive(true);
+			exitButton->SetActive(true); 
 
 			exitButton->OnEnter = [exitButton]()
 			{
@@ -377,7 +382,7 @@ void SceneGame::Update(float dt)
 
 				exitButton->sprite.setTexture(*tex); 
 			};
-			exitButton->OnExit = [exitButton]() 
+			exitButton->OnExit = [exitButton]()
 			{
 				sf::Texture* tex = RESOURCE_MGR.GetTexture("graphics/ExitButton.png"); 
 				exitButton->sprite.setTexture(*tex); 
@@ -388,6 +393,7 @@ void SceneGame::Update(float dt)
 			};
 		}
 	}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////플레이어가 죽어있을때
 	if (INPUT_MGR.GetKeyDown(sf::Keyboard::Escape))
 	{
 		ReStart();
@@ -434,7 +440,7 @@ void SceneGame::ReStart()
 	sticklength = 0.f;
 	stick->SetPosition({ -340.f,257.f });
 	stick->SetRotaition(0.f);
-	wood = false;
+	stickmove = false;
 	SCENE_MGR.ChangeScene(sceneId);
 	land2->SetActive(false);
 	land1->SetSize(Utils::RandomRange(100.f, 200.f), 720.f);
