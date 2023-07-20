@@ -7,19 +7,13 @@ class Scene
 protected:
 	Scene(const Scene&) = delete;
 	Scene& operator=(const Scene&) = delete;
-
 	SceneId sceneId;
-
 	std::string resourceListPath;
-
 	std::list<GameObject*> gameObjects; 
 	std::list<GameObject*> removeGameObjects;
-
 	sf::View worldView;
 	sf::View uiView;
-
 	sf::RenderWindow& window;
-
 
 public:
 	Scene(SceneId id = SceneId::None);
