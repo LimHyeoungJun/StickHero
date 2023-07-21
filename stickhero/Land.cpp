@@ -9,7 +9,7 @@ Land::Land() :ShapeGameObj(ShapeType::Rectangle)
 void Land::SetSize(float width, float height)
 {
 	((sf::RectangleShape*)shape)->setSize({ width, height });
-	
+	this->size = { width,height };
 }
 
 void Land::SetPosition(float x, float y)

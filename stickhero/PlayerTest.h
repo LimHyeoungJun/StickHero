@@ -26,6 +26,7 @@ protected:
 	bool choose = true;
 
 	float Ypos;
+	float landpos;
 
 public:
 	AnimationController animation; 
@@ -45,5 +46,6 @@ public:
 	void PlayerArrival(bool p);
 	bool IsGo() { return isgo; };
 	sf::Vector2f Scales();
+	void SetLandPos(float l);
 };
 

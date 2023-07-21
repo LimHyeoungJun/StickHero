@@ -5,6 +5,7 @@ class GameObject
 {
 protected:
 	sf::Vector2f position;
+	sf::Vector2f size;
 	std::string name;
 	bool isActive = true;
 	Origins origin = Origins::TL;
@@ -24,9 +25,13 @@ public:
 	virtual void SetName(const std::string& n);
 
 	const sf::Vector2f& GetPosition();
+	const sf::Vector2f& GetSize();
 
 	virtual void SetPosition(const sf::Vector2f& p);
 	virtual void SetPosition(float x, float y);
+
+	virtual void SetSize(const sf::Vector2f& p);
+	virtual void SetSize(float x, float y);
 
 	virtual void SetOrigin(Origins origin);
 	virtual void SetOrigin(float x, float y);

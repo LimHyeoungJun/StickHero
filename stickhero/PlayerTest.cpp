@@ -19,9 +19,6 @@ void PlayerTest::Init()
 	animation.SetTarget(&sprite);  
 
 	SetOrigin(Origins::BC);  
-	 
-
-	
 }
 
 void PlayerTest::Reset()
@@ -121,8 +118,9 @@ void PlayerTest::Update(float dt)
 			}
 		}
 	}	
-	sprite.setPosition(position);
-
+	//sprite.setPosition(position);
+	
+	SetPosition(position); 
 	SpriteGo::Update(dt);
 	animation.Update(dt);
 }

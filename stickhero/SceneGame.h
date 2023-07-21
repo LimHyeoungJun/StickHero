@@ -26,6 +26,11 @@ protected:
 	bool playerdie = false;
 	bool scorecount = true;
 	bool landfirst = true;
+
+	bool land1bound = false;
+	bool land2bound = false;
+	bool land3bound = false;
+
 	sf::Vector2f playermaxpos;
 
 	sf::Font* font;
@@ -43,6 +48,7 @@ protected:
 	float land2pos;
 
 	bool create;*/
+	int wahtland;
 
 public:
 	SceneGame();
@@ -57,18 +63,17 @@ public:
 	virtual void Update(float dt) override;
 	virtual void Draw(sf::RenderWindow& window) override;
 
+    void ShowButton();
+
 	void GamePlaying(float dt);
+
 
 	void ReStart(); 
 
 	void SaveScore(int highscore);
 	int LoadScore();
  
-	void CreatLand1();
-	void CreatLand2();
-
-
-	void ShowButton();
+	
 	
 };
 

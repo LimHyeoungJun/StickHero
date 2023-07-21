@@ -36,10 +36,26 @@ const sf::Vector2f& GameObject::GetPosition()
 	return position;
 }
 
+const sf::Vector2f& GameObject::GetSize()
+{
+	return size;
+}
+
 void GameObject::SetPosition(float x, float y)
 {
 	position.x = x;
 	position.y = y;
+}
+
+void GameObject::SetSize(const sf::Vector2f& p)
+{
+	size = p;
+}
+
+void GameObject::SetSize(float x, float y)
+{
+	size.x = x; 
+	size.y = y;
 }
 
 void GameObject::SetPosition(const sf::Vector2f& p)
