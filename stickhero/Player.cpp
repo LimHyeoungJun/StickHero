@@ -10,6 +10,9 @@ Player::Player(const std::string& textureId, const std::string& n)
 	walk.loadFromFile("sound/walking.wav"); 
 	soundwalk.setBuffer(walk); 
 	soundwalk.setVolume(50);
+
+	falling.loadFromFile("sound/falling.wav");
+	soundfalling.setBuffer(falling);
 }
 
 void Player::Init()
@@ -100,6 +103,12 @@ void Player::Update(float dt)
 		{
 			position.y += gravity * dt;
 			isgo = false;
+			if (sound)
+			{
+				sound = false;
+				soundfalling.play();
+			}
+			
 		}
 		if (position.x >= oriPos.x + sticklength + 70.f && (animation.GetCurrentClipId() == "Move"))
 		{
@@ -121,6 +130,9 @@ void Player::Update(float dt)
 			{
 				position.x -= 700.f * dt;
 			}
+
+			sound = true; 
+			soundfalling.stop();
 		}
 	}	
 	//sprite.setPosition(position);

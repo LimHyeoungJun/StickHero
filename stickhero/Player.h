@@ -23,11 +23,16 @@ protected:
 	PlayerType player;
 	bool choose = true;
 
+	bool sound = true;
+
 	float Ypos;
 	float landpos;
 
 	sf::SoundBuffer walk;
 	sf::Sound soundwalk;
+	sf::SoundBuffer falling;
+	sf::Sound soundfalling;
+
 
 public:
 	AnimationController animation; 

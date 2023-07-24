@@ -27,6 +27,7 @@ SceneGame::SceneGame() : Scene(SceneId::Game)
 	soundslash.setBuffer(slash);
 	//soundslash.setVolume(30);
 
+
 	
 };
 
@@ -214,6 +215,7 @@ void SceneGame::Update(float dt)
 		if (player->GetPosition().y > 1000.f)
 		{
 			ShowButton();
+			
 		}
 	}
 		
@@ -293,7 +295,7 @@ void SceneGame::ReStart()
 	land3->SetSize(Utils::RandomRange(100.f, 200.f), 720.f);
 	land3->SetPosition(840.f, 257.f);
 	land3->SetOrigin(Origins::TR);
-
+	
 	
 }
 
@@ -340,6 +342,8 @@ void SceneGame::ShowButton()
 	reButton->SetActive(true);
 	text.setCharacterSize(90);
 	text.setPosition(450.f, 100.f);
+
+
 
 	reButton->OnEnter = [reButton]()
 	{
