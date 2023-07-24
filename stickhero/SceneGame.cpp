@@ -27,7 +27,8 @@ SceneGame::SceneGame() : Scene(SceneId::Game)
 	soundslash.setBuffer(slash);
 	//soundslash.setVolume(30);
 
-
+	collapse.loadFromFile("sound/Collapse.wav");
+	soundcollapse.setBuffer(collapse);
 	
 };
 
@@ -378,7 +379,7 @@ void SceneGame::ShowButton()
 	{
 		ReStart();
 		SCENE_MGR.ChangeScene(SceneId::Title);
-
+		
 	};
 
 	exitButton->SetActive(true);
@@ -433,6 +434,7 @@ void SceneGame::GamePlaying(float dt)
 		wood = true;
 		soundstickup.stop();
 		soundslash.play();
+		sound = true;
 	}
 	if (wood)
 	{
@@ -450,6 +452,12 @@ void SceneGame::GamePlaying(float dt)
 		{
 			player->SetRun(true);
 			ischeck = true;
+			if (sound)
+			{
+				sound = false;
+				soundcollapse.play();
+			}
+			
 		}
 	}
 	if (ischeck)

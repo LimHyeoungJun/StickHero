@@ -28,6 +28,8 @@ protected:
 	bool land2bound = false;
 	bool land3bound = false;
 
+	bool sound = true;
+
 	sf::Font* font;
 
 	sf::Text text;
@@ -44,7 +46,8 @@ protected:
 	sf::Sound soundstickup;
 	sf::SoundBuffer slash;
 	sf::Sound soundslash;
-	
+	sf::SoundBuffer collapse;
+	sf::Sound soundcollapse;
 
 public:
 	SceneGame();
