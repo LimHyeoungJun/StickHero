@@ -39,9 +39,6 @@
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Player2.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="AnimationClip.cpp">
       <Filter>Animation</Filter>
     </ClCompile>
@@ -70,9 +67,6 @@
       <Filter>Framework</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
-      <Filter>GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerTest.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="SpriteEffect.cpp">
@@ -126,11 +120,11 @@
     <ClCompile Include="EggAnimation.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Player2.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -168,9 +162,6 @@
       <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerTest.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="SpriteEffect.h">
@@ -228,6 +219,9 @@
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="EggAnimation.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
   </ItemGroup>

@@ -116,8 +116,6 @@ void Scene::Exit()
 
 void Scene::Update(float dt)
 {
-	
-
 	for (auto go : gameObjects)
 	{
 		if (go->GetActive())

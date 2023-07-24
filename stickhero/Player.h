@@ -2,9 +2,7 @@
 #include "SpriteGo.h"
 #include "AnimationController.h"
 
-//class SceneGame;
-
-class PlayerTest :public SpriteGo
+class Player :public SpriteGo
 {
 
 protected:
@@ -28,11 +26,14 @@ protected:
 	float Ypos;
 	float landpos;
 
+	sf::SoundBuffer walk;
+	sf::Sound soundwalk;
+
 public:
 	AnimationController animation; 
 
-	PlayerTest(const std::string& textureId="", const std::string& n="");
-	virtual ~PlayerTest() override { Release(); }
+	Player(const std::string& textureId="", const std::string& n="");
+	virtual ~Player() override { Release(); }
 
 	virtual void Init() override;
 	virtual void Reset() override;

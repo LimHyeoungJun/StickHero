@@ -1,16 +1,18 @@
 #include "stdafx.h"
-#include "PlayerTest.h"
+#include "Player.h" 
 #include "InputMgr.h"
 #include "ResourceMgr.h"
 #include "SceneChooseCharacter.h"
 
-PlayerTest::PlayerTest(const std::string& textureId, const std::string& n)
+Player::Player(const std::string& textureId, const std::string& n)
 	:SpriteGo(textureId, n)
 {
-	
+	walk.loadFromFile("sound/walking.wav"); 
+	soundwalk.setBuffer(walk); 
+	soundwalk.setVolume(50);
 }
 
-void PlayerTest::Init()
+void Player::Init()
 {
 	animation.AddClip(*RESOURCE_MGR.GetAnimationClip("Animations/Player2_Ani_idle.csv")); 
 	animation.AddClip(*RESOURCE_MGR.GetAnimationClip("Animations/Player2_Ani_attack.csv"));  
@@ -21,7 +23,7 @@ void PlayerTest::Init()
 	SetOrigin(Origins::BC);  
 }
 
-void PlayerTest::Reset()
+void Player::Reset()
 {
 	switch (Variables::playerty)
 	{
@@ -74,7 +76,7 @@ void PlayerTest::Reset()
 
 }
 
-void PlayerTest::Update(float dt)
+void Player::Update(float dt)
 {
 	if (!isdie)
 	{
@@ -87,6 +89,8 @@ void PlayerTest::Update(float dt)
 		{
 			animation.Play("Move");
 			isrun = true;
+			soundwalk.play();
+			soundwalk.setLoop(true);        
 		}
 		if (isrun)
 		{
@@ -104,6 +108,7 @@ void PlayerTest::Update(float dt)
 			isrun = false;
 			reset = true;
 			isgo = true;
+			soundwalk.stop();
 		}
 		if (reset && (animation.GetCurrentClipId() == "Idle")&&!isfulling)
 		{
@@ -125,32 +130,32 @@ void PlayerTest::Update(float dt)
 	animation.Update(dt);
 }
 
-void PlayerTest::SetRun(bool n)
+void Player::SetRun(bool n)
 {
 	animationStart = n;
 }
 
-void PlayerTest::SetStartAnimation(bool n)
+void Player::SetStartAnimation(bool n)
 {
 
 }
 
-void PlayerTest::Setdistance(float d)
+void Player::Setdistance(float d)
 {
 	sticklength = d;
 }
 
-void PlayerTest::PlayerDie(bool n)
+void Player::PlayerDie(bool n)
 {
 	isfulling = n;
 }
 
-void PlayerTest::PlayerArrival(bool p)
+void Player::PlayerArrival(bool p)
 {
 	playerArrival = p;
 }
 
-sf::Vector2f PlayerTest::Scales()  
+sf::Vector2f Player::Scales()  
 {
 	return { 0.f,0.f };
 }

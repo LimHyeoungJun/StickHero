@@ -1,13 +1,12 @@
 #pragma once
 #include "Scene.h"
 
-
-class PlayerTest;
+class Player;
 
 class SceneGame : public Scene
 {
 protected:
-	PlayerTest* player;
+	Player* player;
 
 	sf::RectangleShape shape;
 
@@ -18,11 +17,9 @@ protected:
 	float playerYpos;
 
 	bool wood = false;
-	bool landSequence = true;
 	bool ischeck = false;
 	bool ismove = false;
-	bool isflip = true;
-	bool going = false;
+
 	bool playerdie = false;
 	bool scorecount = true;
 	bool landfirst = true;
@@ -31,24 +28,23 @@ protected:
 	bool land2bound = false;
 	bool land3bound = false;
 
-	sf::Vector2f playermaxpos;
-
 	sf::Font* font;
 
 	sf::Text text;
 	sf::Text best;
 	sf::Texture* backg;
+	sf::Texture* backg2;
 
 	int score = 0;
 	int record;
 
 	std::map<std::string, bool> mouseOverStates;
 
-	/*float land1pos;
-	float land2pos;
-
-	bool create;*/
-	int wahtland;
+	sf::SoundBuffer stickup;
+	sf::Sound soundstickup;
+	sf::SoundBuffer slash;
+	sf::Sound soundslash;
+	
 
 public:
 	SceneGame();
