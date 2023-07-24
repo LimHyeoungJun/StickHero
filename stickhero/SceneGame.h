@@ -30,6 +30,8 @@ protected:
 
 	bool sound = true;
 
+	bool stickcollapse = false;
+
 	sf::Font* font;
 
 	sf::Text text;
@@ -50,6 +52,8 @@ protected:
 	sf::Sound soundcollapse;
 	sf::SoundBuffer bgm;
 	sf::Sound soundbgm;
+	sf::SoundBuffer bonus;
+	sf::Sound soundbounus;
 
 public:
 	SceneGame();

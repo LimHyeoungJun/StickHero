@@ -95,7 +95,8 @@ void Player::Update(float dt)
 			animation.Play("Move");
 			isrun = true;
 			soundwalk.play();
-			soundwalk.setLoop(true);        
+			soundwalk.setLoop(true);   
+			
 		}
 		if (isrun)
 		{
@@ -137,7 +138,6 @@ void Player::Update(float dt)
 			
 		}
 	}	
-	//sprite.setPosition(position);
 	
 	SetPosition(position); 
 	SpriteGo::Update(dt);

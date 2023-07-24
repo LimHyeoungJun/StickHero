@@ -133,7 +133,7 @@ void SceneOption::Update(float dt)
 	{
 		if (shapepos.intersects(arrowpos))
 		{
-			std::cout << "º¼·ý ¾÷" << std::endl;
+			std::cout << Variables::volume << std::endl;
 			if (Variables::volume >= 100)
 			{
 				Variables::volume = 100;
@@ -145,7 +145,7 @@ void SceneOption::Update(float dt)
 		}
 		else
 		{
-			std::cout << "º¼·ý ´Ù¿î" << std::endl;
+			std::cout << Variables::volume << std::endl;
 			if (Variables::volume == 0)
 			{
 				Variables::volume = 0;
