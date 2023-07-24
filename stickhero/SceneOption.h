@@ -9,7 +9,7 @@ protected:
 	sf::RectangleShape shapepoint;
 
 	bool first = true;
-	int volume = 50;
+	//int volume = 50;
 
 public:
 	SceneOption();

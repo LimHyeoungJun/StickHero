@@ -22,13 +22,16 @@ SceneGame::SceneGame() : Scene(SceneId::Game)
 
 	stickup.loadFromFile("sound/stickup.wav");
 	soundstickup.setBuffer(stickup);
+	
 
 	slash.loadFromFile("sound/slash.wav");
 	soundslash.setBuffer(slash);
-	//soundslash.setVolume(30);
+	
 
 	collapse.loadFromFile("sound/Collapse.wav");
 	soundcollapse.setBuffer(collapse);
+
+	
 	
 };
 
@@ -111,6 +114,11 @@ void SceneGame::Release()
 
 void SceneGame::Enter()
 {
+	bgm.loadFromFile("sound/bgm.wav");
+	soundbgm.setBuffer(bgm);
+	soundbgm.setVolume(Variables::volume);
+	soundbgm.play();
+	soundbgm.setLoop(true);
 
 	auto size = FRAMEWORK.GetWindowSize();
 	worldView.setSize(size);
@@ -164,7 +172,12 @@ void SceneGame::Exit()
 void SceneGame::Update(float dt)
 {
 	GamePlaying(dt);
+	soundcollapse.setVolume(Variables::volume);
+	soundstickup.setVolume(Variables::volume);
+	soundslash.setVolume(Variables::volume);
+	soundbgm.setVolume(Variables::volume);
 
+	std::cout << Variables::volume << std::endl;
 	SpriteGo* cloud = (SpriteGo*)FindGo("Cloud");
 	SpriteGo* bg = (SpriteGo*)FindGo("bg");
 	SpriteGo* bg2 = (SpriteGo*)FindGo("bg2");
@@ -216,13 +229,13 @@ void SceneGame::Update(float dt)
 		if (player->GetPosition().y > 1000.f)
 		{
 			ShowButton();
-			
 		}
 	}
 		
 	if (INPUT_MGR.GetKeyDown(sf::Keyboard::Escape))
 	{
 		ReStart();
+		soundbgm.stop();
 		SCENE_MGR.ChangeScene(SceneId::Title);
 	}
 
@@ -378,6 +391,7 @@ void SceneGame::ShowButton()
 	homeButton->OnClick = [this]()
 	{
 		ReStart();
+		soundbgm.stop();
 		SCENE_MGR.ChangeScene(SceneId::Title);
 		
 	};
@@ -494,6 +508,7 @@ void SceneGame::GamePlaying(float dt)
 			player->PlayerDie(true);
 			playerdie = true;
 			player->PlayerArrival(false);
+			soundbgm.stop();
 		}
 	}
 	if (player->IsGo())
@@ -575,7 +590,7 @@ void SceneGame::GamePlaying(float dt)
 		stick->SetRotaition(0.f);
 		hitbox->SetPosition({ -340.f + sticklength, 257.f });
 		wood = false;
-
+		
 	}
 	else
 	{

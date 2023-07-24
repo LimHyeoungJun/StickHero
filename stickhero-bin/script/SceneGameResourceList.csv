@@ -28,3 +28,9 @@
 0,graphics/charaterBg.png
 0,graphics/egg.png
 0,graphics/cloud.png
+2,sound/bgm.wav
+2,sound/Collapse.wav
+2,sound/falling.wav
+2,sound/slash.wav
+2,sound/stickup.wav
+2,sound/walking.wav

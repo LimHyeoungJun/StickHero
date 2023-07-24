@@ -48,6 +48,8 @@ protected:
 	sf::Sound soundslash;
 	sf::SoundBuffer collapse;
 	sf::Sound soundcollapse;
+	sf::SoundBuffer bgm;
+	sf::Sound soundbgm;
 
 public:
 	SceneGame();

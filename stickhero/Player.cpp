@@ -9,10 +9,11 @@ Player::Player(const std::string& textureId, const std::string& n)
 {
 	walk.loadFromFile("sound/walking.wav"); 
 	soundwalk.setBuffer(walk); 
-	soundwalk.setVolume(50);
+	
 
 	falling.loadFromFile("sound/falling.wav");
 	soundfalling.setBuffer(falling);
+	
 }
 
 void Player::Init()
@@ -79,6 +80,9 @@ void Player::Reset()
 
 void Player::Update(float dt)
 {
+	soundwalk.setVolume(Variables::volume);
+	soundfalling.setVolume(Variables::volume);
+
 	if (!isdie)
 	{
 		if (INPUT_MGR.GetKeyUp(sf::Keyboard::Space))
