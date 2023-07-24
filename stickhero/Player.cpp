@@ -64,8 +64,6 @@ void Player::Reset()
 		SetOrigin(Origins::BC); 
 		SetPosition(-450, 260);
 		Ypos = 260.f;
-
-
 		break;
 	}
 	}
@@ -76,7 +74,7 @@ void Player::Reset()
 	SetPosition(-450, Ypos);
 	
 	oriPos = GetPosition(); 
-
+	soundfalling.stop();
 }
 
 void Player::Update(float dt)
@@ -132,7 +130,7 @@ void Player::Update(float dt)
 			}
 
 			sound = true; 
-			soundfalling.stop();
+			
 		}
 	}	
 	//sprite.setPosition(position);
