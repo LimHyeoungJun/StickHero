@@ -18,12 +18,15 @@ protected:
 	Hitbox* hitbox;
 
 	SpriteGo* bg[2];
+	SpriteGo* cloud[3];
 	Land* land[3];
 	Land* landBs[3];
-	sf::FloatRect landBound[3];
-	sf::FloatRect landBsBound[3];
+	sf::FloatRect landBound[2];
+	sf::FloatRect landBsBound[2];
 
 	sf::Vector2f landpos[3];
+	sf::Vector2f cloudpos[3];
+	sf::Vector2f bgpos[2];
 
 	float sticklength;
 	float speed = 1000.f;
