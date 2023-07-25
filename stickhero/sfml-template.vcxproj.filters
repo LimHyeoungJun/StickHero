@@ -123,6 +123,9 @@
     <ClCompile Include="Player.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="SoundGo.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -222,6 +225,9 @@
       <Filter>GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundGo.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
   </ItemGroup>

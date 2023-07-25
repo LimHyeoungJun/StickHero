@@ -13,7 +13,7 @@
 #include <sstream>
 #include "SpriteGo.h"
 #include "UiButton.h"
-
+#include "SoundGo.h"
 
 SceneGame::SceneGame() : Scene(SceneId::Game)
 {
@@ -22,7 +22,6 @@ SceneGame::SceneGame() : Scene(SceneId::Game)
 
 	stickup.loadFromFile("sound/stickup.wav");
 	soundstickup.setBuffer(stickup);
-	
 
 	slash.loadFromFile("sound/slash.wav");
 	soundslash.setBuffer(slash);
@@ -97,6 +96,8 @@ void SceneGame::Init()
 	hitbox->SetOrigin(Origins::MC);
 
 	record = LoadScore();
+
+	
 
 	for (auto go : gameObjects)
 	{
@@ -195,8 +196,10 @@ void SceneGame::Exit()
 void SceneGame::Update(float dt)
 {
 	GamePlaying(dt);
+	
+
 	soundcollapse.setVolume(Variables::volume);
-	soundstickup.setVolume(Variables::volume);
+	soundstickup.setVolume(Variables::volume); 
 	soundslash.setVolume(Variables::volume);
 	soundbgm.setVolume(Variables::volume);
 	soundbounus.setVolume(Variables::volume);
@@ -470,7 +473,7 @@ void SceneGame::GamePlaying(float dt)
 	
 	sf::FloatRect hitb = hitbox->GetGlobalBounds();
 
-   
+	
 
 
 	if (INPUT_MGR.GetKey(sf::Keyboard::Space)&& !stickcollapse)
@@ -486,7 +489,6 @@ void SceneGame::GamePlaying(float dt)
 	{
 		soundstickup.play();
 		soundstickup.setLoop(true);
-		
 	}
 
 	if (INPUT_MGR.GetKeyUp(sf::Keyboard::Space))

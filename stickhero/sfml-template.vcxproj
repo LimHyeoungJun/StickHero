@@ -213,6 +213,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="SoundGo.cpp" />
     <ClCompile Include="SpriteEffect.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
@@ -271,6 +272,7 @@
     <ClInclude Include="SceneTitle.h" />
     <ClInclude Include="ShapeGameObj.h" />
     <ClInclude Include="Singleton.h" />
+    <ClInclude Include="SoundGo.h" />
     <ClInclude Include="SpriteEffect.h" />
     <ClInclude Include="SpriteGo.h" />
     <ClInclude Include="stdafx.h" />

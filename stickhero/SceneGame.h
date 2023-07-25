@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+#include "SoundGo.h"
 
 class Player;
 
@@ -42,10 +43,11 @@ protected:
 	int score = 0;
 	int record;
 
-	std::map<std::string, bool> mouseOverStates;
+	std::map<std::string, bool> mouseOverStates; 
 
 	sf::SoundBuffer stickup;
 	sf::Sound soundstickup;
+
 	sf::SoundBuffer slash;
 	sf::Sound soundslash;
 	sf::SoundBuffer collapse;
