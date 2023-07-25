@@ -3,21 +3,35 @@
 #include "SoundGo.h"
 
 class Player;
+class SpriteGo;
+class UiButton;
+class Land;
+class Stick;
+class Hitbox;
+
 
 class SceneGame : public Scene
 {
 protected:
 	Player* player;
+	Stick* stick;
+	Hitbox* hitbox;
 
-	sf::RectangleShape shape;
+	SpriteGo* bg[2];
+	Land* land[3];
+	Land* landBs[3];
+	sf::FloatRect landBound[3];
+	sf::FloatRect landBsBound[3];
+
+	sf::Vector2f landpos[3];
 
 	float sticklength;
 	float speed = 1000.f;
 	float totalRotation = 0.f;
-    float time = 1.7f;
+	float time = 1.7f;
 	float playerYpos;
 
-	bool wood = false;
+	bool stickfall = false;
 	bool ischeck = false;
 	bool ismove = false;
 
@@ -25,12 +39,9 @@ protected:
 	bool scorecount = true;
 	bool landfirst = true;
 
-	bool land1bound = false;
-	bool land2bound = false;
-	bool land3bound = false;
+	bool islandbound[3] = { false };
 
 	bool sound = true;
-
 	bool stickcollapse = false;
 
 	sf::Font* font;
@@ -43,11 +54,10 @@ protected:
 	int score = 0;
 	int record;
 
-	std::map<std::string, bool> mouseOverStates; 
+	std::map<std::string, bool> mouseOverStates;
 
 	sf::SoundBuffer stickup;
 	sf::Sound soundstickup;
-
 	sf::SoundBuffer slash;
 	sf::Sound soundslash;
 	sf::SoundBuffer collapse;
@@ -70,17 +80,17 @@ public:
 	virtual void Update(float dt) override;
 	virtual void Draw(sf::RenderWindow& window) override;
 
-    void ShowButton();
+	void ShowButton();
 
 	void GamePlaying(float dt);
 
 
-	void ReStart(); 
+	void ReStart();
 
 	void SaveScore(int highscore);
 	int LoadScore();
- 
-	
-	
+
+
+
 };
 
