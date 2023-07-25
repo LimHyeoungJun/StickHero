@@ -131,7 +131,7 @@ void Player::Update(float dt)
 			}
 			else
 			{
-				position.x -= 700.f * dt;
+				position.x -= 1000.f * dt;
 			}
 
 			sound = true; 

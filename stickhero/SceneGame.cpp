@@ -115,11 +115,12 @@ void SceneGame::Enter()
 		land[0]->sortLayer = 20;
 		land[0]->SetOrigin(Origins::TR);
 		landBs[0] = (Land*)AddGo(new Land());
-		landBs[0]->SetSize(20.f, 20.f);
+		landBs[0]->SetSize(15.f, 15.f);
 		landBs[0]->SetPosition(land[0]->GetPosition().x - (land[0]->GetSize().x * 0.5f), 257.f);
 		landBs[0]->SetOrigin(Origins::TC);
 		landBs[0]->SetFillColor(sf::Color::Red);
 		landBs[0]->sortLayer = 21;
+
 		land[1] = (Land*)AddGo(new Land());
 		land[1]->SetSize(220.f, 720.f);
 		land[1]->SetPosition(-340.f, 257.f);
@@ -127,23 +128,12 @@ void SceneGame::Enter()
 		land[1]->SetOrigin(Origins::TR);
 		land[1]->SetFillColor(sf::Color::Black);
 		landBs[1] = (Land*)AddGo(new Land());
-		landBs[1]->SetSize(20.f, 20.f);
+		landBs[1]->SetSize(15.f, 15.f);
 		landBs[1]->SetPosition(land[1]->GetPosition().x - (land[1]->GetSize().x * 0.5f), 257.f);
 		landBs[1]->SetOrigin(Origins::TC);
 		landBs[1]->SetFillColor(sf::Color::Red);
 		landBs[1]->sortLayer = 21;
-		land[2] = (Land*)AddGo(new Land());
-		land[2]->SetSize(Utils::RandomRange(100.f, 200.f), 720.f);
-		land[2]->SetPosition(840.f, 257.f);
-		land[2]->sortLayer = 20;
-		land[2]->SetOrigin(Origins::TR);
-		land[2]->SetFillColor(sf::Color::Black);
-		landBs[2] = (Land*)AddGo(new Land());
-		landBs[2]->SetSize(20.f, 20.f);
-		landBs[2]->SetPosition(land[2]->GetPosition().x - (land[2]->GetSize().x * 0.5f), 257.f);
-		landBs[2]->SetOrigin(Origins::TC);
-		landBs[2]->SetFillColor(sf::Color::Red);
-		landBs[2]->sortLayer = 21;
+		
 		landfirst = false;
 	}
 	playerYpos = player->GetPosition().y;
@@ -170,14 +160,14 @@ void SceneGame::Update(float dt)
 	{
 		for (int i = 0; i < 2; ++i)
 		{
-			cloudpos[i].x -= dt * 30.f;
-			bgpos[i].x -= dt * 10.f;
+			cloudpos[i].x -= dt * 50.f;
+			bgpos[i].x -= dt * 25.f;
 		}
 	}
 	else
 	{
-		cloudpos[0].x -= dt * 7.f;
-		cloudpos[1].x -= dt * 10.f;
+		cloudpos[0].x -= dt * 5.f;
+		cloudpos[1].x -= dt * 7.f;
 	}
 	for (int i = 0; i < 2; ++i)
 	{
@@ -282,9 +272,6 @@ void SceneGame::ReStart()
 	land[1]->SetSize(220.f, 720.f);
 	land[1]->SetPosition(-340.f, 257.f);
 	land[1]->SetOrigin(Origins::TR);
-	land[2]->SetSize(Utils::RandomRange(100.f, 200.f), 720.f);
-	land[2]->SetPosition(840.f, 257.f);
-	land[2]->SetOrigin(Origins::TR);
 	stickcollapse = false;
 }
 
@@ -381,18 +368,17 @@ void SceneGame::GamePlaying(float dt)
 {
 	landBs[0]->SetPosition(land[0]->GetPosition().x - (land[0]->GetSize().x * 0.5f), 257.f);
 	landBs[1]->SetPosition(land[1]->GetPosition().x - (land[1]->GetSize().x * 0.5f), 257.f);
-	landBs[2]->SetPosition(land[2]->GetPosition().x - (land[2]->GetSize().x * 0.5f), 257.f);
 	landBound[0] = land[0]->GetGlobalBounds();
 	landBsBound[0] = landBs[0]->GetGlobalBounds();
 	landBound[1] = land[1]->GetGlobalBounds();
 	landBsBound[1] = landBs[1]->GetGlobalBounds();
-	landBound[2] = land[2]->GetGlobalBounds();
-	landBsBound[2] = landBs[2]->GetGlobalBounds();
+	
 	sf::FloatRect hitb = hitbox->GetGlobalBounds();
 	if (INPUT_MGR.GetKey(sf::Keyboard::Space) && !stickcollapse)
 	{
 		sticklength += dt * speed;
 		//std::cout << sticklength << std::endl;
+		savestick = sticklength;
 	}
 	stick->SetSize(7.f, sticklength);
 	stick->SetOrigin(Origins::BR);
@@ -434,7 +420,7 @@ void SceneGame::GamePlaying(float dt)
 	}
 	if (ischeck)
 	{
-		for (int i = 0; i < 3; ++i)
+		for (int i = 0; i < 2; ++i)
 		{
 			if (hitb.intersects(landBound[i]))
 			{
@@ -442,14 +428,14 @@ void SceneGame::GamePlaying(float dt)
 			}
 		}
 
-		if (hitb.intersects(landBound[0]) || hitb.intersects(landBound[1]) || hitb.intersects(landBound[2]))  
+		if (hitb.intersects(landBound[0]) || hitb.intersects(landBound[1]))  
 		{
 			player->Setdistance(sticklength);
 			ischeck = false;
 			player->PlayerArrival(true);
 			if (scorecount)
 			{
-				if (hitb.intersects(landBsBound[0]) || hitb.intersects(landBsBound[1]) || hitb.intersects(landBsBound[2]))
+				if (hitb.intersects(landBsBound[0]) || hitb.intersects(landBsBound[1]))
 				{
 					soundbounus.play();
 					score += 2;
@@ -465,7 +451,6 @@ void SceneGame::GamePlaying(float dt)
 		{
 			player->Setdistance(sticklength);
 			ischeck = false;
-			//player->SetOrigin(Origins::BL);
 			player->PlayerDie(true);
 			playerdie = true;
 			player->PlayerArrival(false);
@@ -477,7 +462,7 @@ void SceneGame::GamePlaying(float dt)
 		if (!playerdie)
 		{
 			ismove = true;
-			for (int i = 0; i < 3; ++i)
+			for (int i = 0; i < 2; ++i)
 			{
 				landpos[i] = land[i]->GetPosition();
 
@@ -485,41 +470,40 @@ void SceneGame::GamePlaying(float dt)
 				{
 					land[i]->SetPosition(player->GetPosition().x + 110.f, 257.f);
 					player->SetRun(false);
-					//std::cout << land1->GetSize().x << std::endl;
 				}
 				else
 				{
-					landpos[i].x -= 700.f * dt;
+					landpos[i].x -= 1800.f * dt;
 					land[i]->SetPosition(landpos[i].x, 257.f);
 					player->SetRun(false);
 				}
 			}
-			for (int i = 0; i < 3; ++i)
+			for (int i = 0; i < 2; ++i)
 			{
 				if (landpos[i].x <= -640.f)
 				{
 					std::cout << "New land" << std::endl;
 					land[i]->SetSize(Utils::RandomRange(100, 200), 720.f);
-					land[i]->SetPosition(Utils::RandomRange(940.f, 1190.f), 720.f);
+					land[i]->SetPosition(Utils::RandomRange((640.f + savestick - 400), (640.f + savestick)) , 720.f);
 					land[i]->SetOrigin(Origins::TR);
+					std::cout << land[i]->GetPosition().x << std::endl;
 				}
 			}
 			if (player->GetPosition().x <= -450.f)
 			{
-				for (int i = 0; i < 3; ++i)
+				for (int i = 0; i < 2; ++i)
 				{
 					islandbound[i] = false;
 				}
 				stickcollapse = false;
 			}
 		}
-
 		totalRotation = 0.f;
 		sticklength = 0.f;
 		scorecount = true;
 		stick->SetPosition({ -340.f,257.f });
 		stick->SetRotaition(0.f);
-		hitbox->SetPosition({ -340.f + sticklength, 257.f });
+		hitbox->SetPosition({ -340.f + sticklength, 257.f }); 
 		stickfall = false;
 	}
 	else

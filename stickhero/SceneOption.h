@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+class Land;
 class SceneOption : public Scene
 {
 protected:
@@ -8,6 +9,8 @@ protected:
 	sf::RectangleShape shape;
 	sf::RectangleShape shapepoint;
 
+	Land* shapevol;
+	Land* shapevolBg;
 	bool first = true;
 	//int volume = 50;
 

@@ -19,13 +19,13 @@ protected:
 
 	SpriteGo* bg[2];
 	SpriteGo* cloud[3];
-	Land* land[3];
-	Land* landBs[3];
+	Land* land[2];
+	Land* landBs[2];
 	sf::FloatRect landBound[2];
 	sf::FloatRect landBsBound[2];
 
-	sf::Vector2f landpos[3];
-	sf::Vector2f cloudpos[3];
+	sf::Vector2f landpos[2];
+	sf::Vector2f cloudpos[2];
 	sf::Vector2f bgpos[2];
 
 	float sticklength;
@@ -33,6 +33,7 @@ protected:
 	float totalRotation = 0.f;
 	float time = 1.7f;
 	float playerYpos;
+	float savestick;
 
 	bool stickfall = false;
 	bool ischeck = false;
@@ -42,7 +43,7 @@ protected:
 	bool scorecount = true;
 	bool landfirst = true;
 
-	bool islandbound[3] = { false };
+	bool islandbound[2] = { false };
 
 	bool sound = true;
 	bool stickcollapse = false;

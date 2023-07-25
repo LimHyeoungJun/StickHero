@@ -10,6 +10,7 @@
 #include "GameObject.h"
 #include "SpriteGo.h"
 #include"UiButton.h"
+#include "Land.h"
 
 SceneOption::SceneOption()
 {
@@ -49,7 +50,7 @@ void SceneOption::Init()
 {
 	Release();
 
-	SpriteGo* tex = (SpriteGo*)AddGo(new SpriteGo("graphics/background.png"));
+	SpriteGo* tex = (SpriteGo*)AddGo(new SpriteGo("graphics/charaterBg.png"));
 	tex->SetOrigin(Origins::MC);
 
 	UiButton* homeButton = (UiButton*)AddGo(new UiButton("graphics/HomeButton.png"));
@@ -62,7 +63,7 @@ void SceneOption::Init()
 	arrow->SetName("Arrow");
 	arrow->sortLayer = 100;
 	arrow->SetOrigin(Origins::TC);
-	arrow->SetPosition(FRAMEWORK.GetWindowSize() * 0.5f);
+	arrow->SetPosition(FRAMEWORK.GetWindowSize().x * 0.5f, FRAMEWORK.GetWindowSize().y * 0.5f+300.f);
 
 	homeButton->OnEnter = [homeButton]()
 	{
@@ -83,12 +84,26 @@ void SceneOption::Init()
 	shape.setSize(sf::Vector2f(500.f, 20.f)); 
 	shape.setOrigin(500.f * 0.5f, 20.f * 0.5f);
 	shape.setFillColor(sf::Color::Red);
-	shape.setPosition(FRAMEWORK.GetWindowSize()*0.5f);
+	shape.setPosition(FRAMEWORK.GetWindowSize().x*0.5f, FRAMEWORK.GetWindowSize().y * 0.5f+300.f);
 
 	shapepoint.setSize(sf::Vector2f(20.f, 20.f));
 	shapepoint.setOrigin(20.f * 0.5f, 20.f * 0.5f);
 	shapepoint.setFillColor(sf::Color::Green);
-	shapepoint.setPosition(FRAMEWORK.GetWindowSize() * 0.5f);
+	shapepoint.setPosition(FRAMEWORK.GetWindowSize().x * 0.5f, FRAMEWORK.GetWindowSize().y * 0.5f+300.f);
+
+	shapevolBg = (Land*)AddGo(new Land());
+	shapevolBg->SetSize(20.f, 500.f);
+	shapevolBg->SetOrigin(Origins::BC);
+	shapevolBg->SetFillColor(sf::Color(128, 128, 128));
+	shapevolBg->SetPosition(FRAMEWORK.GetWindowSize().x * 0.5f, FRAMEWORK.GetWindowSize().y * 0.5f +290.f);
+	shapevolBg->sortLayer = 100;
+
+	shapevol = (Land*)AddGo(new Land());
+	//shapevol->SetSize(20.f, 250.f);
+	shapevol->SetOrigin(Origins::BC);
+	shapevol->SetFillColor(sf::Color::White);
+	shapevol->SetPosition(FRAMEWORK.GetWindowSize().x * 0.5f, FRAMEWORK.GetWindowSize().y * 0.5f + 290.f);
+	shapevol->sortLayer = 120;
 
 	for (auto go : gameObjects)
 	{
@@ -133,7 +148,7 @@ void SceneOption::Update(float dt)
 	{
 		if (shapepos.intersects(arrowpos))
 		{
-			std::cout << Variables::volume << std::endl;
+			
 			if (Variables::volume >= 100)
 			{
 				Variables::volume = 100;
@@ -155,12 +170,11 @@ void SceneOption::Update(float dt)
 				Variables::volume -= 5;
 			}
 		}
-
 	}
-	
+	shapevol->SetSize(20.f, Variables::volume * 5.f); 
+	shapevol->SetOrigin(Origins::BC);
+
 	arrow->SetPosition(pos);
-
-
 
 	Scene::Update(dt);
 }
