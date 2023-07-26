@@ -377,7 +377,6 @@ void SceneGame::GamePlaying(float dt)
 	if (INPUT_MGR.GetKey(sf::Keyboard::Space) && !stickcollapse)
 	{
 		sticklength += dt * speed;
-		//std::cout << sticklength << std::endl;
 		savestick = sticklength;
 	}
 	stick->SetSize(7.f, sticklength);
@@ -398,16 +397,15 @@ void SceneGame::GamePlaying(float dt)
 	}
 	if (stickfall)
 	{
-		float rotationSpeed = 200.f; // 회전 속도 
-		float rotationLimit = 90.f; // 회전한 총 각도 제한 
-		float rotation = rotationSpeed * dt; // 회전 각도 계산 
+		float rotationLimit = 90.f; // 회전 각도 제한 
+		float rotation = 200.f * dt; // 회전
 		if (totalRotation + rotation > rotationLimit)
 		{
 			rotation = rotationLimit - totalRotation; // 회전 총 각도 제한 
 		}
 		totalRotation += rotation; // 회전 총 각도 누적 
 		stick->SetRotaition(totalRotation); // 회전 설정 
-		if (totalRotation >= rotationLimit)
+		if (totalRotation >= rotationLimit) //90도 이상넘어가지 못하게 제한
 		{
 			player->SetRun(true);
 			ischeck = true;
